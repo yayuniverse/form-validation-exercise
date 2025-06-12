@@ -36,7 +36,7 @@ label {
   font-weight: 500;
 }
 
-.error-span {
+.emailError {
   font-size: 12px;
   color: coral;
 }
