@@ -3,12 +3,12 @@ const FORM_BLUEPRINT = {
     elementSelector: "#email",
     helperTextSelector: "#emailHelper",
 
-    validate: (emailElement) => {
-      if (emailElement.validity.valueMissing) {
+    validate: (element) => {
+      if (element.validity.valueMissing) {
         return "Enter a valid email address";
       }
 
-      if (emailElement.validity.typeMismatch) {
+      if (element.validity.typeMismatch) {
         return "Invalid email address";
       }
 
