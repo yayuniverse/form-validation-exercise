@@ -9,7 +9,7 @@ function displayErrorMessage(errorMessage, element, elementHelperText) {
 function clearError(key) {
   const { element, elementHelperText } = getFormFieldDetails(key);
 
-  element.classList.remove("interacted");
+  element.classList.remove("invalid");
   elementHelperText.textContent = "";
 }
 
