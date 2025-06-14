@@ -10,8 +10,14 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
   width: 320px;
+}
+
+.inputFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .emailContainer, .countryContainer {
@@ -48,13 +54,17 @@ label {
   font-weight: 500;
 }
 
-#emailHelper {
+#emailHelper, #countryHelper {
   font-size: 12px;
   color: coral;
 }
 
+#emailHelper:empty, #countryHelper:empty {
+  display: none;
+}
+
 button {
-  height: 32px;
+  height: 36px;
   background-color: #333;
   border: none;
   border-radius: 6px;
