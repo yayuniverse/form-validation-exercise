@@ -9,19 +9,17 @@ function displayErrorMessage(errorMessage, element, elementHelperText) {
 function getElementInstructions(key) {
   const elementInstructions = FORM_BLUEPRINT[key];
   return {
-    elementInstructions,
     element: document.querySelector(elementInstructions.elementSelector),
     elementHelperText: document.querySelector(
       elementInstructions.helperTextSelector,
     ),
+    validateElement: elementInstructions.validate,
   };
 }
 
 function validateInput(key) {
-  const { elementInstructions, element, elementHelperText } =
+  const { element, elementHelperText, validateElement } =
     getElementInstructions(key);
-
-  const validateElement = elementInstructions.validate;
 
   const errorMessage = validateElement(element);
 
