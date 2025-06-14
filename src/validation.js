@@ -6,20 +6,20 @@ function displayErrorMessage(errorMessage, element, elementHelperText) {
   element.classList.add("invalid");
 }
 
-function getElementInstructions(key) {
-  const elementInstructions = FORM_BLUEPRINT[key];
+function getFormFieldDetails(key) {
+  const elementDefinition = FORM_BLUEPRINT[key];
   return {
-    element: document.querySelector(elementInstructions.elementSelector),
+    element: document.querySelector(elementDefinition.elementSelector),
     elementHelperText: document.querySelector(
-      elementInstructions.helperTextSelector,
+      elementDefinition.helperTextSelector,
     ),
-    validateElement: elementInstructions.validate,
+    validateElement: elementDefinition.validate,
   };
 }
 
 function validateInput(key) {
   const { element, elementHelperText, validateElement } =
-    getElementInstructions(key);
+    getFormFieldDetails(key);
 
   const errorMessage = validateElement(element);
 
@@ -29,10 +29,10 @@ function validateInput(key) {
 }
 
 function clearError(key) {
-  const { element, elementHelperText } = getElementInstructions(key);
+  const { element, elementHelperText } = getFormFieldDetails(key);
 
   element.classList.remove("interacted");
   elementHelperText.textContent = "";
 }
 
-export { validateInput, clearError };
+export { validateInput, clearError, getFormFieldDetails };

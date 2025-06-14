@@ -1,6 +1,7 @@
 import "./reset.css";
 import "./global.css";
-import { validateInput, clearError } from "./validation";
+import { validateInput, clearError, getFormFieldDetails } from "./validation";
+import FORM_BLUEPRINT from "./form-fields-blueprint";
 
 const form = document.querySelector("form");
 
@@ -8,12 +9,15 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-const emailField = document.querySelector("#email");
+// iteratively find and attach event listeners to elements using the definitions in the FORM_BLUEPRINT structure
+Object.keys(FORM_BLUEPRINT).forEach((key) => {
+  const { element } = getFormFieldDetails(key);
 
-emailField.addEventListener("focus", () => {
-  clearError("email");
-});
+  element.addEventListener("focus", () => {
+    clearError(key);
+  });
 
-emailField.addEventListener("blur", () => {
-  validateInput("email");
+  element.addEventListener("blur", () => {
+    validateInput(key);
+  });
 });
