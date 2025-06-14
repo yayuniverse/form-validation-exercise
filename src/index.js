@@ -1,7 +1,9 @@
-import "./reset.css";
-import "./global.css";
-import { validateInput, clearError, getFormFieldDetails } from "./validation";
+import "./css/reset.css";
+import "./css/global.css";
 import FORM_BLUEPRINT from "./form-fields-blueprint";
+import validateInput from "./validation";
+import getFormFieldDetails from "./utility";
+import { clearError } from "./display";
 
 const form = document.querySelector("form");
 
