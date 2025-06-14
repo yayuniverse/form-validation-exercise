@@ -6,16 +6,24 @@ function displayErrorMessage(errorMessage, element, elementHelperText) {
   element.classList.add("invalid");
 }
 
-function validateInput(key) {
+function getElementInstructions(key) {
   const elementInstructions = FORM_BLUEPRINT[key];
+  return {
+    elementInstructions,
+    element: document.querySelector(elementInstructions.elementSelector),
+    elementHelperText: document.querySelector(
+      elementInstructions.helperTextSelector,
+    ),
+  };
+}
 
-  const element = document.querySelector(elementInstructions.elementSelector);
+function validateInput(key) {
+  const { elementInstructions, element, elementHelperText } =
+    getElementInstructions(key);
+
   const validateElement = elementInstructions.validate;
 
   const errorMessage = validateElement(element);
-  const elementHelperText = document.querySelector(
-    elementInstructions.helperTextSelector,
-  );
 
   if (errorMessage) {
     displayErrorMessage(errorMessage, element, elementHelperText);
@@ -23,12 +31,7 @@ function validateInput(key) {
 }
 
 function clearError(key) {
-  const elementInstructions = FORM_BLUEPRINT[key];
-
-  const element = document.querySelector(elementInstructions.elementSelector);
-  const elementHelperText = document.querySelector(
-    elementInstructions.helperTextSelector,
-  );
+  const { element, elementHelperText } = getElementInstructions(key);
 
   element.classList.remove("interacted");
   elementHelperText.textContent = "";
