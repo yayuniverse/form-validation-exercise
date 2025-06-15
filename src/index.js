@@ -3,7 +3,7 @@ import "./css/global.css";
 import FORM_BLUEPRINT from "./form-fields-blueprint";
 import validateInput from "./validation";
 import getFormFieldDetails from "./utility";
-import { clearError } from "./display";
+import { clearError, enablePostal } from "./display";
 
 const form = document.querySelector("form");
 
@@ -22,4 +22,8 @@ Object.keys(FORM_BLUEPRINT).forEach((key) => {
   element.addEventListener("blur", () => {
     validateInput(key);
   });
+
+  if (element.id === "country") {
+    element.addEventListener("change", enablePostal);
+  }
 });
