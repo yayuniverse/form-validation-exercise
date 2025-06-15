@@ -15,6 +15,18 @@ const FORM_BLUEPRINT = {
       return "";
     },
   },
+  country: {
+    elementSelector: "#countrySelect",
+    helperTextSelector: "#countryHelper",
+
+    validate: (element) => {
+      if (element.validity.valueMissing) {
+        return "Select a country";
+      }
+
+      return "";
+    },
+  },
 };
 
 export default FORM_BLUEPRINT;
