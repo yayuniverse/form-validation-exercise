@@ -1,5 +1,3 @@
-import POSTAL_CODES from "./postal-codes";
-
 const FORM_BLUEPRINT = {
   email: {
     elementSelector: "#email",
@@ -34,21 +32,14 @@ const FORM_BLUEPRINT = {
     helperTextSelector: "#postalHelper",
 
     validate: (element) => {
-      const countrySelect = document.querySelector(
-        FORM_BLUEPRINT.country.elementSelector,
-      );
-      const selectedCountry =
-        countrySelect.options[countrySelect.selectedIndex].text;
-
       if (element.validity.valueMissing) {
-        return `Enter a postal code for ${selectedCountry}`;
+        return `Enter a postal code`;
+        // return `Enter a postal code for ${selectedCountry}`;
       }
 
-      const pattern = new RegExp(POSTAL_CODES[countrySelect.value].pattern);
-      const validationResult = pattern.test(element.value);
-
-      if (!validationResult) {
-        return `Invalid code format for ${selectedCountry}`;
+      if (element.validity.patternMismatch) {
+        return `Invalid code format`;
+        // return `Invalid code format for ${selectedCountry}`;
       }
 
       return "";
