@@ -4,6 +4,7 @@ import FORM_BLUEPRINT from "./form-fields-blueprint";
 import validateInput from "./validation";
 import getFormFieldDetails from "./utility";
 import { clearError, enablePostal } from "./display";
+import POSTAL_CODES from "./postal-codes";
 
 const form = document.querySelector("form");
 
@@ -22,8 +23,21 @@ Object.keys(FORM_BLUEPRINT).forEach((key) => {
   element.addEventListener("blur", () => {
     validateInput(key);
   });
+});
 
-  if (element.id === "country") {
-    element.addEventListener("change", enablePostal);
+// handle special dependence between country and postal code elements
+const { element: countryField } = getFormFieldDetails("country");
+const { element: postalField } = getFormFieldDetails("postal");
+
+countryField.addEventListener("change", () => {
+  enablePostal();
+
+  const selectedCountry = countryField.value;
+  const { pattern } = POSTAL_CODES[selectedCountry];
+  postalField.setAttribute("pattern", pattern);
+
+  if (postalField.value !== "") {
+    clearError("postal");
+    validateInput("postal");
   }
 });
