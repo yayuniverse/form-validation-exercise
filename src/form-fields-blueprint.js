@@ -45,6 +45,40 @@ const FORM_BLUEPRINT = {
       return "";
     },
   },
+  password: {
+    elementSelector: "#password",
+    helperTextSelector: "#passwordHelper",
+
+    validate: (element) => {
+      if (element.validity.valueMissing) {
+        return "Enter a password";
+      }
+
+      const unmetRequirements = [];
+
+      if (element.validity.tooShort) {
+        unmetRequirements.push("is too short");
+      }
+
+      if (!/\d/.test(element.value)) {
+        unmetRequirements.push("needs a number");
+      }
+
+      if (!/[^a-zA-Z0-9]/.test(element.value)) {
+        unmetRequirements.push("needs a symbol");
+      }
+
+      if (!/[A-Z]/.test(element.value)) {
+        unmetRequirements.push("needs an uppercase character");
+      }
+
+      if (unmetRequirements.length >= 1) {
+        return `Password ${unmetRequirements.join(", ")}`;
+      }
+
+      return "";
+    },
+  },
 };
 
 export default FORM_BLUEPRINT;
