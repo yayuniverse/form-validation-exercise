@@ -55,7 +55,7 @@ const FORM_BLUEPRINT = {
       }
 
       if (element.validity.tooShort) {
-        return "is too short";
+        return "Password is too short";
       }
 
       const unmetRequirements = [];
