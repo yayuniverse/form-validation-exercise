@@ -11,7 +11,7 @@
         <div class="emailContainer">
           <label for="email">Email address</label>
           <input type="email" name="email" id="email" required />
-          <span id="emailHelper"></span>
+          <span id="emailHelper" class="helperText"></span>
         </div>
 
         <div class="countryContainer">
@@ -24,7 +24,7 @@
             <option value="JP">Japan</option>
             <option value="DE">Germany</option>
           </select>
-          <span id="countryHelper"></span>
+          <span id="countryHelper" class="helperText"></span>
         </div>
 
         <div class="postalContainer">
@@ -37,7 +37,22 @@
             required
             disabled
           />
-          <span id="postalHelper"></span>
+          <span id="postalHelper" class="helperText"></span>
+        </div>
+
+        <div class="passwordContainer">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            minlength="8"
+            required
+          />
+          <span id="passwordHelper" class="helperText">
+            Password must be at least 8 characters and contain an uppercase
+            letter, a number, and a symbol</span
+          >
         </div>
       </div>
 

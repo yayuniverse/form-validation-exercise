@@ -3,6 +3,7 @@ import getFormFieldDetails from "./utility";
 import FORM_BLUEPRINT from "./form-fields-blueprint";
 
 function displayErrorMessage(errorMessage, element, elementHelperText) {
+  elementHelperText.classList.add("helperTextError");
   elementHelperText.textContent = `${errorMessage}`;
   element.classList.add("invalid");
 }
