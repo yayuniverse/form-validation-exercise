@@ -73,7 +73,7 @@ const FORM_BLUEPRINT = {
       }
 
       if (unmetRequirements.length >= 1) {
-        return `Password must contain ${unmetRequirements.join(", ")}`;
+        return `Password must also contain ${unmetRequirements.join(", ")}`;
       }
 
       return "";
