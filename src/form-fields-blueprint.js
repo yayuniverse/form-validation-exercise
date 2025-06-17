@@ -54,26 +54,26 @@ const FORM_BLUEPRINT = {
         return "Enter a password";
       }
 
-      const unmetRequirements = [];
-
       if (element.validity.tooShort) {
-        unmetRequirements.push("is too short");
+        return "is too short";
       }
 
+      const unmetRequirements = [];
+
       if (!/\d/.test(element.value)) {
-        unmetRequirements.push("needs a number");
+        unmetRequirements.push("a number");
       }
 
       if (!/[^a-zA-Z0-9]/.test(element.value)) {
-        unmetRequirements.push("needs a symbol");
+        unmetRequirements.push("a symbol");
       }
 
       if (!/[A-Z]/.test(element.value)) {
-        unmetRequirements.push("needs an uppercase character");
+        unmetRequirements.push("an uppercase character");
       }
 
       if (unmetRequirements.length >= 1) {
-        return `Password ${unmetRequirements.join(", ")}`;
+        return `Password must contain ${unmetRequirements.join(", ")}`;
       }
 
       return "";
