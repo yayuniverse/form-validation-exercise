@@ -10,6 +10,10 @@ const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  Object.keys(FORM_BLUEPRINT).forEach((key) => {
+    validateInput(key);
+  });
 });
 
 // iteratively find and attach event listeners to elements using the definitions in the FORM_BLUEPRINT structure
