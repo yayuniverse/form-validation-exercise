@@ -25,7 +25,7 @@ Object.keys(FORM_BLUEPRINT).forEach((key) => {
   });
 });
 
-// handle special dependence between country and postal code elements
+// handle dependence between country and postal code elements
 const { element: countryField } = getFormFieldDetails("country");
 const { element: postalField } = getFormFieldDetails("postal");
 
@@ -42,6 +42,7 @@ countryField.addEventListener("change", () => {
   }
 });
 
+// handle dependence between password and password confirmation elements
 const { element: passwordField } = getFormFieldDetails("password");
 const { element: passwordConfirmField } =
   getFormFieldDetails("passwordConfirm");
