@@ -41,3 +41,14 @@ countryField.addEventListener("change", () => {
     validateInput("postal");
   }
 });
+
+const { element: passwordField } = getFormFieldDetails("password");
+const { element: passwordConfirmField } =
+  getFormFieldDetails("passwordConfirm");
+
+passwordField.addEventListener("change", () => {
+  if (passwordConfirmField.value !== "") {
+    clearError("passwordConfirm");
+    validateInput("passwordConfirm");
+  }
+});

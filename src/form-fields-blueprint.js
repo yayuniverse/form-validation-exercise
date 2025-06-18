@@ -1,3 +1,5 @@
+import doPasswordsMatch from "./validation-helpers";
+
 const FORM_BLUEPRINT = {
   email: {
     elementSelector: "#email",
@@ -74,6 +76,22 @@ const FORM_BLUEPRINT = {
 
       if (unmetRequirements.length >= 1) {
         return `Password must also contain ${unmetRequirements.join(", ")}`;
+      }
+
+      return "";
+    },
+  },
+  passwordConfirm: {
+    elementSelector: "#passwordConfirm",
+    helperTextSelector: "#passwordConfirmHelper",
+
+    validate: (element) => {
+      if (element.validity.valueMissing) {
+        return "Confirm your password";
+      }
+
+      if (doPasswordsMatch() === false) {
+        return "Passwords don't match";
       }
 
       return "";
