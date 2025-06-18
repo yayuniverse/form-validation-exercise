@@ -8,13 +8,13 @@
   <body>
     <form novalidate>
       <div class="inputFields">
-        <div class="emailContainer">
+        <div class="inputFieldContainer">
           <label for="email">Email address</label>
           <input type="email" name="email" id="email" required />
           <span id="emailHelper" class="helperText"></span>
         </div>
 
-        <div class="countryContainer">
+        <div class="inputFieldContainer">
           <label for="country">Country</label>
           <select name="countrySelect" id="country" required>
             <option value="" disabled selected>Select a country</option>
@@ -27,7 +27,7 @@
           <span id="countryHelper" class="helperText"></span>
         </div>
 
-        <div class="postalContainer">
+        <div class="inputFieldContainer">
           <label for="postal" class="postalSelect">Postal code</label>
           <input
             type="text"
@@ -40,7 +40,7 @@
           <span id="postalHelper" class="helperText"></span>
         </div>
 
-        <div class="passwordContainer">
+        <div class="inputFieldContainer">
           <label for="password">Password</label>
           <input
             type="password"
@@ -55,6 +55,17 @@
             Password must be at least 8 characters and contain an uppercase
             letter, a number, and a symbol</span
           >
+        </div>
+
+        <div class="inputFieldContainer">
+          <label for="passwordConfirm">Confirm your password</label>
+          <input
+            type="password"
+            name="passwordConfirm"
+            id="passwordConfirm"
+            required
+          />
+          <span id="passwordContainerHelper" class="helperText"></span>
         </div>
       </div>
 
