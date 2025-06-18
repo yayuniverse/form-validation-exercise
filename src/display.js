@@ -10,9 +10,11 @@ function displayErrorMessage(errorMessage, element, elementHelperText) {
 
 function clearError(key) {
   const { element, elementHelperText } = getFormFieldDetails(key);
+  const { defaultText } = element.dataset;
 
   element.classList.remove("invalid");
-  elementHelperText.textContent = "";
+  elementHelperText.classList.remove("helperTextError");
+  elementHelperText.textContent = defaultText || "";
 }
 
 function enablePostal() {
